@@ -34,7 +34,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Provider provider = Provider.LOCAL;
 
-    @
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles",joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
    private Set<Role> roles = new HashSet<>();
 
 }
