@@ -34,6 +34,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Provider provider = Provider.LOCAL;
 
+    @
    private Set<Role> roles = new HashSet<>();
 
 }
