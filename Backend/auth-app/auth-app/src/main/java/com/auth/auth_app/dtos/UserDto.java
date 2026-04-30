@@ -31,9 +31,6 @@ public class UserDto {
     private Provider provider;
     private Set<RoleDto> roles = new HashSet<>();
 
-    public boolean exsistsByEmail(String email) {
-
-    }
 
     // 🔥 getters & setters (VERY IMPORTANT)
 }
