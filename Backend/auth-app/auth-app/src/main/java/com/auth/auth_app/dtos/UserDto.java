@@ -1,10 +1,20 @@
 package com.auth.auth_app.dtos;
 
 import com.auth.auth_app.enums.Provider;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 
 public class UserDto {
 
@@ -20,6 +30,10 @@ public class UserDto {
 
     private Provider provider;
     private Set<RoleDto> roles = new HashSet<>();
+
+    public boolean exsistsByEmail(String email) {
+
+    }
 
     // 🔥 getters & setters (VERY IMPORTANT)
 }
