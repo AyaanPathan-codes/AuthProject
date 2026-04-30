@@ -1,18 +1,17 @@
 package com.auth.auth_app.service;
 
 import com.auth.auth_app.dtos.UserDto;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
+@Service
 public class UserServiceImplementation implements UserService {
-    @Override
-    public UserDto getUser() {
-        return null;
-    }
 
     @Override
-    public UserDto getUserById() {
-        return null;
+    public UserDto getUserById(UUID id) {
+        return null; // implement logic
     }
 
     @Override
@@ -26,12 +25,12 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public UserDto updateUser(UserDto userDto) {
+    public UserDto updateUser(UUID id, UserDto userDto) {
         return null;
     }
 
     @Override
-    public void deleteUser(UserDto userDto) {
+    public void deleteUser(UUID id) {
 
     }
 
