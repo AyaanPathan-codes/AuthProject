@@ -58,6 +58,6 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public List<UserDto> getAllUsers() {
-        return List.of();
+        return userRepository.findAll().stream().map(user -> modelMapper.map(user,UserDto.class)).toList();
     }
 }
