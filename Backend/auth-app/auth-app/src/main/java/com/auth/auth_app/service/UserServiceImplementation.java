@@ -1,6 +1,7 @@
 package com.auth.auth_app.service;
 
 import com.auth.auth_app.enums.Provider;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import com.auth.auth_app.dtos.UserDto;
 import com.auth.auth_app.models.User;
@@ -25,10 +26,13 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public UserDto getUserByEmail(String email) {
-        return null;
+
+        User user = userRepository.findByEmail(email).orElseThrow(()-> new RuntimeException("Cannot find user"));
+        return modelMapper.map(user, UserDto.class);
     }
 
     @Override
+    @Transactional
     public UserDto createUser(UserDto userDto) {
 
         if(userDto.getEmail() == null || userDto.getEmail().isEmpty()){
