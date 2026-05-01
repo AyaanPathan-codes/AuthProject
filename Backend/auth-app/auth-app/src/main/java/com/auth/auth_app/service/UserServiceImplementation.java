@@ -1,8 +1,6 @@
 package com.auth.auth_app.service;
 
 import com.auth.auth_app.enums.Provider;
-import com.auth.auth_app.exceptions.ResourceNotFound;
-import com.auth.auth_app.exceptions.UserNotFound;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import com.auth.auth_app.dtos.UserDto;
@@ -23,14 +21,13 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public UserDto getUserById(UUID id) {
-        User user = userRepository.findById(id).orElseThrow(()-> new UserNotFound("User Not Found By Email"));
-        return modelMapper.map(user,UserDto.class);
+        return null; // implement logic
     }
 
     @Override
     public UserDto getUserByEmail(String email) {
 
-        User user = userRepository.findByEmail(email).orElseThrow(()-> new ResourceNotFound("User not found by Email"));
+        User user = userRepository.findByEmail(email).orElseThrow(()-> new RuntimeException("Cannot find user"));
         return modelMapper.map(user, UserDto.class);
     }
 
