@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController()
 @RequestMapping("/api/v1/users")
@@ -25,4 +26,15 @@ public class UserController {
     public ResponseEntity<List<UserDto>> getAllUsers(){
         return ResponseEntity.status(HttpStatus.OK).body(userService.getAllUsers());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable UUID id) {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(id));
+    }
+
+    @GetMapping("/email/{emailId}")
+    public ResponseEntity<UserDto> getUserByEmail(@PathVariable String emailId) {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserByEmail(emailId));
+    }
+
 }

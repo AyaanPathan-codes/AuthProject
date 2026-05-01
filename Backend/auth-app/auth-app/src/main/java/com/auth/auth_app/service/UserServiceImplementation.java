@@ -55,6 +55,10 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public UserDto updateUser(UUID id, UserDto userDto) {
+       User user =  userRepository.findById(id).orElseThrow(()-> new UserNotFound("User not found"));
+       if(userDto.getEmail() == null || userDto.getEmail().isEmpty()){
+            throw new IllegalArgumentException("Email is required");
+       }
         return null;
     }
 
