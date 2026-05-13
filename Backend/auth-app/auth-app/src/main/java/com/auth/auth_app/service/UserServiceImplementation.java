@@ -57,14 +57,25 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public UserDto updateUser(UUID id, UserDto userDto) {
-       User user =  userRepository.findById(id).orElseThrow(()-> new UserNotFound("User not found"));
-       if(userDto.getEmail() == null || userDto.getEmail().isEmpty()){
-            throw new IllegalArgumentException("Email is required");
+       User existinguser =  userRepository.findById(id).orElseThrow(()-> new UserNotFound("User not found"));
+       if(userDto.getFirstName() != null ){
+           existinguser.setFirstName(userDto.getFirstName());
        }
-        return null;
+       if(userDto.getImage() != null ){
+           existinguser.setImage(userDto.getImage());
+       }
+       if(userDto.getPassword() != null ){
+           existinguser.setPassword(userDto.getPassword());
+       }
+       if(userDto.getProvider() != null){
+           existinguser.setProvider(userDto.getProvider());
+       }
+
+        return modelMapper.map(existinguser,UserDto.class);
     }
 
     @Override
+    @Transactional
     public void deleteUser(UUID userId) {
      User user =  userRepository.findById(userId).orElseThrow(()-> new UserNotFound("User not found"));
       userRepository.deleteById(userId);
