@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     ResponseEntity<ErrorResponse> handleIllegalArgumentExcetion(IllegalArgumentException exception){
-        ErrorResponse internalServerError = new ErrorResponse(exception.getMessage(),404, HttpStatus.NOT_FOUND);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(internalServerError);
+        ErrorResponse internalServerError = new ErrorResponse(exception.getMessage(),408, HttpStatus.NOT_FOUND);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(internalServerError);
     }
 }
