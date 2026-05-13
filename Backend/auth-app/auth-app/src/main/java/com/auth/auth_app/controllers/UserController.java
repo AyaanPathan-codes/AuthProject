@@ -37,4 +37,13 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUserByEmail(emailId));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto,@PathVariable("id") UUID userId) {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(userId,userDto));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable("id") UUID userId) {
+        userService.deleteUser(userId);
+    }
 }
