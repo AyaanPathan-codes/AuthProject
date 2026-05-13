@@ -3,14 +3,14 @@ package com.auth.auth_app.service;
 import com.auth.auth_app.enums.Provider;
 import com.auth.auth_app.exceptions.ResourceNotFound;
 import com.auth.auth_app.exceptions.UserNotFound;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+
 import org.modelmapper.ModelMapper;
 import com.auth.auth_app.dtos.UserDto;
 import com.auth.auth_app.models.User;
 import com.auth.auth_app.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +21,7 @@ public class UserServiceImplementation implements UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 
+    @Transactional(readOnly = true)
     @Override
     public UserDto getUserById(UUID id) {
         User user =  userRepository.findById(id).orElseThrow(()-> new UserNotFound("User not found"));
