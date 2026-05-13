@@ -1,4 +1,12 @@
 package com.auth.auth_app.dtos;
 
-public record ErrorResponse() {
-}
+import org.springframework.http.HttpStatus;
+
+public record ErrorResponse(
+
+    String message,
+    int StatusCode,
+    HttpStatus status
+){
+
+        }
