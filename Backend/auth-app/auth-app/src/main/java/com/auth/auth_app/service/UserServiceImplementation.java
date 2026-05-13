@@ -3,6 +3,7 @@ package com.auth.auth_app.service;
 import com.auth.auth_app.enums.Provider;
 import com.auth.auth_app.exceptions.ResourceNotFound;
 import com.auth.auth_app.exceptions.UserNotFound;
+import com.auth.auth_app.helpers.UserHelper;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -64,8 +65,9 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public void deleteUser(UUID id) {
-
+    public void deleteUser(UUID userId) {
+     User user =  userRepository.findById(userId).orElseThrow(()-> new UserNotFound("User not found"));
+      userRepository.deleteById(userId);
     }
 
     @Override
