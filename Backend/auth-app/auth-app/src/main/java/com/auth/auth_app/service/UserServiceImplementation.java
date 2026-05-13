@@ -31,7 +31,7 @@ public class UserServiceImplementation implements UserService {
     @Override
     public UserDto getUserByEmail(String email) {
 
-        User user = userRepository.findByEmail(email).orElseThrow(()-> new ResourceNotFound("Cannot find user"));
+        User user = userRepository.findByEmail(email).orElseThrow(()-> new ResourceNotFound("Cannot find user by Email"));
         return modelMapper.map(user, UserDto.class);
     }
 
