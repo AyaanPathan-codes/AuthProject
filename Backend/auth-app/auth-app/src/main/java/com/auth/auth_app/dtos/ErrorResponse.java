@@ -8,5 +8,4 @@ public record ErrorResponse(
     int StatusCode,
     HttpStatus status
 ){
-
-        }
+}
