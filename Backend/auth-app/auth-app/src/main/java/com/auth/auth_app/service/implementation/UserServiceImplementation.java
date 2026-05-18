@@ -1,9 +1,9 @@
-package com.auth.auth_app.service;
+package com.auth.auth_app.service.implementation;
 
 import com.auth.auth_app.enums.Provider;
 import com.auth.auth_app.exceptions.ResourceNotFound;
 import com.auth.auth_app.exceptions.UserNotFound;
-import com.auth.auth_app.helpers.UserHelper;
+import com.auth.auth_app.service.UserService;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.modelmapper.ModelMapper;
