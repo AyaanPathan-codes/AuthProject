@@ -1,4 +1,8 @@
 package com.auth.auth_app.service;
 
+import com.auth.auth_app.dtos.UserDto;
+
 public interface AuthService  {
+
+    UserDto registerUser(UserDto userDto);
 }
