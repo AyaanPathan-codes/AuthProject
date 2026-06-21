@@ -12,4 +12,27 @@ public class MapperConfig {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
+    @Configuration
+    public static class SecurityConfig {
+
+    //    @Bean
+    //   public UserDetailsService user(){
+    //    User.UserBuilder userBuilder = User.withDefaultPasswordEncoder();
+    //      UserDetails user = userBuilder
+    //              .username("Ayaan")
+    //              .password("ayaan")
+    //              .roles("ADMIN")
+    //              .build();
+    //
+    //        UserDetails admin = userBuilder
+    //                .username("admin")
+    //                .password("password")
+    //                .roles("USER", "ADMIN")
+    //                .build();
+
+
+
+
+    }
 }

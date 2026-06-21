@@ -12,6 +12,8 @@ import com.auth.auth_app.models.User;
 import com.auth.auth_app.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 
@@ -48,11 +50,27 @@ public class UserServiceImplementation implements UserService {
             throw new IllegalArgumentException("Email already exists");
         }
 
-        User user = modelMapper.map(userDto,User.class);
-        user.setProvider(userDto.getProvider() !=null?userDto.getProvider(): Provider.LOCAL);
-        User savedUser =  userRepository.save(user);
-        return modelMapper.map(savedUser,UserDto.class);
+        User user = modelMapper.map(userDto, User.class);
 
+        if(user.getRoles() == null){
+            user.setRoles(new HashSet<>());
+        }
+
+        user.setProvider(
+                userDto.getProvider() != null
+                        ? userDto.getProvider()
+                        : Provider.LOCAL
+        );
+
+        User savedUser = userRepository.save(user);
+
+        UserDto response = modelMapper.map(savedUser, UserDto.class);
+
+        if(response.getRoles() == null){
+            response.setRoles(new HashSet<>());
+        }
+
+        return response;
     }
 
     @Override
